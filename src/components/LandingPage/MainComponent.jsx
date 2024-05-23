@@ -9,19 +9,14 @@ function MainComponent() {
   return (
     <div className=" bg-black h-[171vw] md:h-[105vh] flex md:flex-row flex-col">
       <div className="flex flex-col">
-        <motion.h1
-          className="text-white md:text-8xl text-5xl font-bold md:mt-16 mt-10 ms-12 text-stroke"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
+        <motion.h1 className="text-white md:text-8xl text-5xl font-bold md:mt-16 mt-10 ms-12 text-stroke">
           Track Crypto
         </motion.h1>
         <motion.h1
           className="text-blue md:text-8xl text-5xl font-bold md:mt-7 mt-2 ms-12 "
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
           Real Time.
         </motion.h1>
@@ -29,7 +24,7 @@ function MainComponent() {
           className="text-grey mt-6 ms-12 text-sm"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
+          transition={{ duration: 0.5, delay: 0.9 }}
         >
           Track crypto through a public api in real time. Visit the dashboard to
           do so!
@@ -38,17 +33,17 @@ function MainComponent() {
           className="flex ms-12 gap-6 md:mt-11 mt-7"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.6 }}
+          transition={{ duration: 0.5, delay: 1.2 }}
         >
-            <Link to="/dashboard">
-          <Button text="Dashboard" type="btn" />
-            </Link>
+          <Link to="/dashboard">
+            <Button text="Dashboard" type="btn" />
+          </Link>
           <Button text="share" type="outlined" />
         </motion.div>
       </div>
-      <div className=" mt-24 md:mt-[14vh] ms-[35vw] md:ms-[auto] w-[30%] relative bottom-3 left-0">
+      <div className="mt-24 md:mt-[14vh] ms-[35vw] md:ms-[auto] w-[30%] relative bottom-3 left-0">
         <motion.img
-          className=" md:w-[24vw] absolute z-10 md:-left-14 md:-top-12 -left-8 top-1 phone"
+          className="w-[800px] md:w-[24vw] absolute z-10 md:-left-14 md:-top-12 -left-8 top-1"
           src={phone}
           alt="phone image"
           initial={{ y: -10 }}
@@ -60,6 +55,7 @@ function MainComponent() {
             repeat: Infinity,
           }}
         />
+
         <img
           className="w-[70vw] md:w-[20vw] absolute"
           src={gradient}

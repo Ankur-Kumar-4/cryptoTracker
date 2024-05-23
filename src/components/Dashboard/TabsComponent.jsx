@@ -4,6 +4,7 @@ import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Grid from "./Grid";
+import List from "./List";
 
 export default function TabsComponent({ coins }) {
   const [value, setValue] = useState("1");
@@ -16,8 +17,11 @@ export default function TabsComponent({ coins }) {
     textTransform: "capitalize",
     fontWeight: 600,
   };
+  const stylePanel = {
+    padding: "2px",
+  };
   return (
-    <div className="bg-black text-white">
+    <div className="bg-black text-white mt-3">
       <TabContext value={value}>
         <TabList
           onChange={handleChange}
@@ -36,8 +40,12 @@ export default function TabsComponent({ coins }) {
             })}
           </div>
         </TabPanel>
-        <TabPanel value="2">
-          <div>mapping for list</div>
+        <TabPanel value="2" sx={stylePanel}>
+          <table className="w-[100%] md:w-[93%] block ms-auto me-auto mt-8">
+            {coins.map((coin, i) => {
+              return <List coin={coin} key={i} />;
+            })}
+          </table>
         </TabPanel>
       </TabContext>
     </div>
