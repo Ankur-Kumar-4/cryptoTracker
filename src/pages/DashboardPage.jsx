@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/common/Navbar";
 import TabsComponent from "../components/Dashboard/TabsComponent";
-import axios from "axios";
+
 import Search from "../components/Dashboard/Search";
 import NoitemFound from "../components/Dashboard/NoitemFound";
 import PaginationComponent from "../components/Dashboard/PaginationComponent";
+import Loader from "../components/common/Loader";
+import BackToTopBtn from "../components/common/BackToTopBtn";
+import { get100Coins } from "../functions/get100Coins";
 
 function Dashboard() {
   const [coins, setCoins] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [paginatedcoins, setPaginatedCoins] = useState([]);
   const [searchParam, setSearchParam] = useState("");
   const [page, setPage] = useState(1);
@@ -29,46 +33,44 @@ function Dashboard() {
   });
 
   useEffect(() => {
-    const fetchCoinMarkets = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.coingecko.com/api/v3/coins/markets",
-          {
-            headers: {
-              accept: "application/json",
-            },
-            params: {
-              vs_currency: "usd", // Specify the currency (e.g., USD)
-              order: "market_cap_desc", // Order by market cap descending
-              per_page: 100, // Number of coins to return per page
-              page: 1, // Page number
-              sparkline: false, // Include sparkline data (true or false)
-            },
-          }
-        );
-        setCoins(response.data);
-        setPaginatedCoins(response.data.slice(0, 10));
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchCoinMarkets();
+    getdata();
   }, []);
 
+  const getdata = async () => {
+    const coins100 = await get100Coins();
+    console.log(coins100);
+    if (coins100) {
+      setCoins(coins100.data);
+      setPaginatedCoins(coins100.data.slice(0, 10));
+      setIsLoading(false);
+    }
+  };
   return (
-    <div className="">
-      <Navbar />
-      <Search searchParam={searchParam} onSearhChange={onSearhChange} />
-      {filteredCoins.length == 0 && searchParam != "" ? (
-        <NoitemFound setSearchParam={setSearchParam} />
+    <>
+      {isLoading ? (
+        <Loader />
       ) : (
-        <TabsComponent coins={searchParam ? filteredCoins : paginatedcoins} />
-      )}
+        <div className="">
+          <Navbar />
+          <BackToTopBtn />
+          <Search searchParam={searchParam} onSearhChange={onSearhChange} />
+          {filteredCoins.length == 0 && searchParam != "" ? (
+            <NoitemFound setSearchParam={setSearchParam} />
+          ) : (
+            <TabsComponent
+              coins={searchParam ? filteredCoins : paginatedcoins}
+            />
+          )}
 
-      {!searchParam && (
-        <PaginationComponent page={page} handlePageChange={handlePageChange} />
+          {!searchParam && (
+            <PaginationComponent
+              page={page}
+              handlePageChange={handlePageChange}
+            />
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 }
 

@@ -43,7 +43,7 @@ function MainComponent() {
       </div>
       <div className="mt-24 md:mt-[14vh] ms-[35vw] md:ms-[auto] w-[30%] relative bottom-3 left-0">
         <motion.img
-          className="w-[800px] md:w-[24vw] absolute z-10 md:-left-14 md:-top-12 -left-8 top-1"
+          className=" md:h-auto md:w-[24vw] absolute z-10 md:-left-14 md:-top-12 -left-8 top-1"
           src={phone}
           alt="phone image"
           initial={{ y: -10 }}

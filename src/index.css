@@ -11,6 +11,9 @@
   --green: #61c96f;
   --red: #f94141;
 }
+html{
+  scroll-behavior: smooth;
+}
 body {
   font-family: "Inter", sans-serif !important;
   background-color: var(--black) !important;
@@ -36,4 +39,12 @@ body {
 img {
   -webkit-user-drag: none;
   -moz-user-select: none;
+}
+.desc-anchor a {
+text-decoration: underline !important;
+}
+.desc-anchor p {
+  margin-top: 8px;
+  color: var(--grey);
+  cursor: pointer;
 }
