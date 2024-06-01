@@ -15,6 +15,14 @@ function Dashboard() {
   const [paginatedcoins, setPaginatedCoins] = useState([]);
   const [searchParam, setSearchParam] = useState("");
   const [page, setPage] = useState(1);
+  // const [wishlist, setWishlist] = useState([]);
+  
+  // const handleWishlistToggle = (coinId) => {
+  //   const newWishlist =[...wishlist]
+  //   newWishlist.push(coinId)
+  //   setWishlist(newWishlist);
+  // };
+
   const handlePageChange = (event, value) => {
     setPage(value);
     var previousIndex = (value - 1) * 10;

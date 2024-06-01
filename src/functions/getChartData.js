@@ -16,7 +16,7 @@ export const getChartData = async (id, days, pricetype) => {
     );
 
     return response.data[pricetype];
-  } catch (error) {
-    console.log(error);
+  } catch (error) {    
+    console.log(error);    
   }
 };

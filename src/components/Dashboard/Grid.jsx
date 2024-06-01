@@ -1,21 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import WishlistIcon from "../wishlistPage/WishlistIcon";
 
-function Grid({ coin }) {
+function Grid({ coin, onWishListIconClick, isCoinInWishlist }) {
+  // const [wishlist, setWishlist] = useState([]);
+
+  // const handleWishlistToggle = (coinId) => {
+  //   const newWishlist =[...wishlist]
+  //   newWishlist.push(coinId)
+  //   setWishlist(newWishlist);
+  // };
+  // const handleWishlistToggle = (coinId) => {
+
+  //   setWishlist((prevWishlist) => {
+  //     if (prevWishlist.includes(coinId)) {
+  //       return prevWishlist.filter((id) => id !== coinId);
+  //     } else {
+  //       return [...prevWishlist, coinId];
+  //     }
+  //   });
+  // };
+  // console.log(wishlist);
+
+  // const isCoinInWishlist = wishlist.includes(coin.id);
+
   return (
-    <Link to={`/coin/${coin.id}`}>
-      <motion.div
-        className={
-          coin.price_change_percentage_24h > 0
-            ? "w-[300px] h-[300px] md:w-[240px] flex flex-col justify-center md:h-[240px] bg-darkgrey border-[2px] border-darkgrey rounded-xl ps-5 hover:border-[1.5px] hover:border-green transition-all delay-75 duration-200 cursor-pointer"
-            : "w-[300px] h-[300px] md:w-[240px] flex flex-col justify-center md:h-[240px] bg-darkgrey border-[2px] border-darkgrey rounded-xl ps-5 hover:border-[1.5px] hover:border-red transition-all delay-75 duration-200 cursor-pointer"
-        }
-        whileHover={{ scale: 1.03 }}
-      >
-        <div className="flex justify-start items-center gap-7 md:gap-[1rem]">
+    <motion.div
+      className={
+        coin.price_change_percentage_24h > 0
+          ? "w-[300px] h-[300px] md:w-[240px] flex flex-col justify-center md:h-[240px] bg-darkgrey border-[2px] border-darkgrey rounded-xl ps-5 hover:border-[1.5px] hover:border-green transition-all delay-75 duration-200 cursor-pointer"
+          : "w-[300px] h-[300px] md:w-[240px] flex flex-col justify-center md:h-[240px] bg-darkgrey border-[2px] border-darkgrey rounded-xl ps-5 hover:border-[1.5px] hover:border-red transition-all delay-75 duration-200 cursor-pointer"
+      }
+      whileHover={{ scale: 1.03 }}
+    >
+      <div className="flex justify-between items-center gap-7 md:gap-[1rem]">
+        <div className="flex gap-5 items-center">
           <img
             className="w-[70px] h-[70px] md:w-[3.1rem]  md:h-[3.1rem]"
             src={coin.image}
@@ -28,6 +50,20 @@ function Grid({ coin }) {
             <p className="text-grey md:text-xs mt-1">{coin.name}</p>
           </div>
         </div>
+        <div
+          className={
+            coin.price_change_percentage_24h < 0
+              ? "text-red me-3"
+              : "text-green me-3"
+          }
+        >
+          <WishlistIcon
+            onWishListIconClick={onWishListIconClick}
+            isSelected={isCoinInWishlist}
+          />
+        </div>
+      </div>
+      <Link to={`/coin/${coin.id}`}>
         <div className="flex gap-5 items-center mt-7">
           {coin.price_change_percentage_24h > 0 ? (
             <div className="border-green border-[2px] w-min px-4 py-1 font-semibold rounded-[20px] md:text-sm text-green hover:bg-green hover:text-white">
@@ -67,8 +103,8 @@ function Grid({ coin }) {
             Market Cap : ${coin.market_cap.toLocaleString()}
           </p>
         </div>
-      </motion.div>
-    </Link>
+      </Link>
+    </motion.div>
   );
 }
 

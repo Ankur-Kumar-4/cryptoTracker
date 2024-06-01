@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import Tab from "@mui/material/Tab";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
@@ -8,6 +8,22 @@ import List from "./List";
 
 export default function TabsComponent({ coins }) {
   const [value, setValue] = useState("1");
+  const [wishlist, setWishlist] = useState(
+    JSON.parse(localStorage.getItem("wishlist")) ?? []
+  );
+
+  const handleWishlistToggle = (coinId) => {
+    let newWishlist = [...wishlist];
+    if (wishlist.includes(coinId)) {
+      newWishlist = wishlist.filter((id) => id !== coinId);
+    } else {
+      newWishlist.push(coinId);
+    }
+    setWishlist(newWishlist);
+  };
+  useEffect(() => {
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+  }, [wishlist]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -36,7 +52,14 @@ export default function TabsComponent({ coins }) {
         <TabPanel value="1">
           <div className="flex justify-center items-center flex-wrap gap-[1.7rem] mt-5 ">
             {coins.map((coin, i) => {
-              return <Grid coin={coin} key={i} />;
+              return (
+                <Grid
+                  coin={coin}
+                  key={i}
+                  onWishListIconClick={() => handleWishlistToggle(coin.id)}
+                  isCoinInWishlist={wishlist.includes(coin.id)}
+                />
+              );
             })}
           </div>
         </TabPanel>
