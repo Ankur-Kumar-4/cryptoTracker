@@ -5,6 +5,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import Grid from "./Grid";
 import List from "./List";
+import NoItemFound from "../wishlistPage/NoItemFound";
 
 export default function TabsComponent({ coins }) {
   const [value, setValue] = useState("1");
@@ -51,7 +52,7 @@ export default function TabsComponent({ coins }) {
 
         <TabPanel value="1">
           <div className="flex justify-center items-center flex-wrap gap-[1.7rem] mt-5 ">
-            {coins.map((coin, i) => {
+            {coins.length == 0 ? <NoItemFound/>: coins.map((coin, i) => {
               return (
                 <Grid
                   coin={coin}
@@ -65,7 +66,7 @@ export default function TabsComponent({ coins }) {
         </TabPanel>
         <TabPanel value="2" sx={stylePanel}>
           <table className="w-[100%] md:w-[93%] block ms-auto me-auto mt-8">
-            {coins.map((coin, i) => {
+            {coins.length == 0 ? <center><NoItemFound/></center> : coins.map((coin, i) => {
               return <List coin={coin} key={i} />;
             })}
           </table>

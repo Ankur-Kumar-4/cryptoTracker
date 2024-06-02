@@ -6,7 +6,7 @@ export default function ToggleButtons({ priceType, handlePriceTypeChange }) {
     <ToggleButtonGroup
       sx={{
         height: "2rem",
-        width:"15rem",
+        width:"18rem",
         "& .Mui-selected": {
           borderColor: "var(--blue)",
           borderWidth: 1.3,

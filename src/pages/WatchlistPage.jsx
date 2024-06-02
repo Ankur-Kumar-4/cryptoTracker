@@ -19,8 +19,7 @@ function WatchlistPage() {
     const responce = await get100Coins();
     setCoins(getWishlistedCoins(responce.data, wishListedData));
     setIsLoading(false);
-    console.log(wishListedData);
-    console.log(coins);
+    
   };
 
   const getWishlistedCoins = (data, wishlist) => {
