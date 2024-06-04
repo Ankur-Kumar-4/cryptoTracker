@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 import PropTypes from "prop-types";
 import { Chart as ChartJs } from "chart.js/auto";
 import { convertNumber } from "../../functions/convertNumber";
+import Loader from "../common/Loader";
 
 function Chart({
   chartData = { labels: [], datasets: [] },

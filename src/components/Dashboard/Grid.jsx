@@ -1,34 +1,15 @@
 import React, { useState, useEffect } from "react";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import { motion } from "framer-motion";
+
 import { Link } from "react-router-dom";
 import WishlistIcon from "../wishlistPage/WishlistIcon";
 
 function Grid({ coin, onWishListIconClick, isCoinInWishlist }) {
-  // const [wishlist, setWishlist] = useState([]);
 
-  // const handleWishlistToggle = (coinId) => {
-  //   const newWishlist =[...wishlist]
-  //   newWishlist.push(coinId)
-  //   setWishlist(newWishlist);
-  // };
-  // const handleWishlistToggle = (coinId) => {
-
-  //   setWishlist((prevWishlist) => {
-  //     if (prevWishlist.includes(coinId)) {
-  //       return prevWishlist.filter((id) => id !== coinId);
-  //     } else {
-  //       return [...prevWishlist, coinId];
-  //     }
-  //   });
-  // };
-  // console.log(wishlist);
-
-  // const isCoinInWishlist = wishlist.includes(coin.id);
 
   return (
-    <motion.div
+    <div
       className={
         coin.price_change_percentage_24h > 0
           ? "w-[300px] h-[300px] md:w-[240px] flex flex-col justify-center md:h-[240px] bg-darkgrey border-[2px] border-darkgrey rounded-xl ps-5 hover:border-[1.5px] hover:border-green transition-all delay-75 duration-200 cursor-pointer"
@@ -104,7 +85,7 @@ function Grid({ coin, onWishListIconClick, isCoinInWishlist }) {
           </p>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }
 

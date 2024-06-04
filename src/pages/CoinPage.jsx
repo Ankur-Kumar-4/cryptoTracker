@@ -18,7 +18,7 @@ function CoinPage() {
   const [coinData, setCoinData] = useState();
   const [days, setDays] = useState(7);
   const [chartdata, setChartData] = useState({});
-  // const pricetypeArray = ["prices", "market_caps", "total_volumes"];
+
   const [priceType, setPriceType] = useState("prices");
 
   useEffect(() => {

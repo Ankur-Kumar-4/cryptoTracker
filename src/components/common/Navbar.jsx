@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import AnchorTemporaryDrawer from "./Drawer";
 import { styled } from "@mui/material/styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -7,6 +7,11 @@ import Button from "./Button";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const [themeIsDark, setThemeIsDark] = useState(true);
+  console.log(themeIsDark);
+  const handleChange = () => {
+    setThemeIsDark(!themeIsDark);
+  };
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -64,7 +69,14 @@ function Navbar() {
       <div className="hidden md:flex text-grey text-[0.9rem] gap-8 items-center font-bold">
         <div className="translate-x-7">
           <FormControlLabel
-            control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+            control={
+              <MaterialUISwitch
+                checked={themeIsDark}
+                onChange={handleChange}
+                sx={{ m: 1 }}
+                // defaultChecked
+              />
+            }
           />
         </div>
 

@@ -4,6 +4,7 @@ import gradient from "../../assets/gradient.png";
 import phone from "../../assets/phone.png";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import ShareButton from "../common/ShareButton";
 
 function MainComponent() {
   return (
@@ -38,7 +39,7 @@ function MainComponent() {
           <Link to="/dashboard">
             <Button text="Dashboard" type="btn" />
           </Link>
-          <Button text="share" type="outlined" />
+          <ShareButton/>
         </motion.div>
       </div>
       <div className="mt-24 md:mt-[14vh] ms-[35vw] md:ms-[auto] w-[30%] relative bottom-3 left-0">
