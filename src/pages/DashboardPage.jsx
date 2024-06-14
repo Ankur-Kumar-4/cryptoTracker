@@ -15,13 +15,6 @@ function Dashboard() {
   const [paginatedcoins, setPaginatedCoins] = useState([]);
   const [searchParam, setSearchParam] = useState("");
   const [page, setPage] = useState(1);
-  // const [wishlist, setWishlist] = useState([]);
-  
-  // const handleWishlistToggle = (coinId) => {
-  //   const newWishlist =[...wishlist]
-  //   newWishlist.push(coinId)
-  //   setWishlist(newWishlist);
-  // };
 
   const handlePageChange = (event, value) => {
     setPage(value);
@@ -42,14 +35,15 @@ function Dashboard() {
 
   useEffect(() => {
     getdata();
-  }, []);
+  }, [page]);
 
   const getdata = async () => {
-    const coins100 = await get100Coins();
+    setIsLoading(true);
+    const coins100 = await get100Coins(page);
     console.log(coins100);
     if (coins100) {
       setCoins(coins100.data);
-      setPaginatedCoins(coins100.data.slice(0, 10));
+      setPaginatedCoins(coins100.data);
       setIsLoading(false);
     }
   };
@@ -59,7 +53,6 @@ function Dashboard() {
         <Loader />
       ) : (
         <div className="">
-          <Navbar />
           <BackToTopBtn />
           <Search searchParam={searchParam} onSearhChange={onSearhChange} />
           {filteredCoins.length == 0 && searchParam != "" ? (

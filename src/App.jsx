@@ -1,15 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-AnalyserNode;
+import { useState, useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import DashboardPage from "./pages/DashboardPage";
 import CoinPage from "./pages/CoinPage";
 import ComparePage from "./pages/ComparePage";
 import WatchlistPage from "./pages/WatchlistPage";
-import { useState,useEffect } from "react";
+import Navbar from "./components/common/Navbar";
+import BackToTopBtn from "./components/common/BackToTopBtn";
 
 function App() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -23,6 +24,8 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <Navbar toggleTheme={toggleTheme} />
+        <BackToTopBtn />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/dashboard" element={<DashboardPage />} />

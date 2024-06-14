@@ -60,7 +60,7 @@ function CoinPage() {
 
   return (
     <div>
-      <Navbar />
+      
       {isLoading ? (
         <Loader />
       ) : (

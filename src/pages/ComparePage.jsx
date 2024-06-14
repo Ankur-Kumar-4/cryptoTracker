@@ -95,7 +95,7 @@ function ComparePage() {
 
   return (
     <div>
-      <Navbar />
+     
       {isLoading ? (
         <Loader />
       ) : (

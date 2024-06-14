@@ -19,17 +19,14 @@ function WatchlistPage() {
     const responce = await get100Coins();
     setCoins(getWishlistedCoins(responce.data, wishListedData));
     setIsLoading(false);
-    
   };
 
   const getWishlistedCoins = (data, wishlist) => {
     return data.filter((coin) => wishlist.includes(coin.id));
   };
 
-
   return (
     <div>
-      <Navbar />
       {isLoading ? (
         <Loader />
       ) : (

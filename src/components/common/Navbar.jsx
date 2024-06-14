@@ -6,12 +6,22 @@ import Switch from "@mui/material/Switch";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 
-function Navbar() {
-  const [themeIsDark, setThemeIsDark] = useState(true);
-  console.log(themeIsDark);
+function Navbar({ toggleTheme }) {
+  const [themeIsDark, setThemeIsDark] = useState(
+    localStorage.getItem("theme") == "dark" ? true : false
+  );
+  const [select, setSelect] = useState("home");
+
+  // console.log(themeIsDark);
   const handleChange = () => {
     setThemeIsDark(!themeIsDark);
+    toggleTheme();
   };
+
+  const handleSelect = (val) => {
+    setSelect(val);
+  };
+
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -81,14 +91,41 @@ function Navbar() {
         </div>
 
         <Link to="/">
-          <div className="hover:text-white cursor-pointer">Home</div>
+          <div
+            onClick={() => handleSelect("home")}
+            className={
+              select === "home"
+                ? "hover:text-white text-white cursor-pointer"
+                : "hover:text-white cursor-pointer"
+            }
+          >
+            Home
+          </div>
         </Link>
         <Link to="/compare">
-          <div className="hover:text-white cursor-pointer">Compare</div>
+          <div
+            onClick={() => handleSelect("compare")}
+            className={
+              select === "compare"
+                ? "hover:text-white text-white cursor-pointer"
+                : "hover:text-white cursor-pointer"
+            }
+          >
+            Compare
+          </div>
         </Link>
 
         <Link to="/watchlist">
-          <div className="hover:text-white cursor-pointer">Watchlist</div>
+          <div
+            onClick={() => handleSelect("watchlist")}
+            className={
+              select === "watchlist"
+                ? "hover:text-white text-white cursor-pointer"
+                : "hover:text-white cursor-pointer"
+            }
+          >
+            Watchlist
+          </div>
         </Link>
 
         <Link to="/dashboard">

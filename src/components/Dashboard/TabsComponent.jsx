@@ -9,7 +9,7 @@ import NoItemFound from "../wishlistPage/NoItemFound";
 import { motion } from "framer-motion";
 
 export default function TabsComponent({ coins }) {
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState(localStorage.getItem("tabvalue") ?? "1");
   const [wishlist, setWishlist] = useState(
     JSON.parse(localStorage.getItem("wishlist")) ?? []
   );
@@ -29,6 +29,7 @@ export default function TabsComponent({ coins }) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    localStorage.setItem("tabvalue",newValue);
   };
   const style = {
     color: "var(--white)",

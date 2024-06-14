@@ -7,7 +7,7 @@ export default function PaginationComponent({ page, handlePageChange }) {
   return (
     <div className="flex justify-center items-center mt-6 mb-8">
       <Pagination
-        count={10}
+        count={25}
         page={page}
         onChange={(event, value) => handlePageChange(event, value)}
         sx={{

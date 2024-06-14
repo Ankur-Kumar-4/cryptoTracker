@@ -11,7 +11,18 @@
   --green: #61c96f;
   --red: #f94141;
 }
-html{
+
+[data-theme="light"] {
+  --white: #1e1e1e;
+  --black: #ffffff;
+  --blue: #007bff;
+  --grey: #888;
+  --darkgrey: #eae9e9;
+  --green: #28a745;
+  --red: #dc3545;
+}
+
+html {
   scroll-behavior: smooth;
 }
 body {
@@ -41,7 +52,7 @@ img {
   -moz-user-select: none;
 }
 .desc-anchor a {
-text-decoration: underline !important;
+  text-decoration: underline !important;
 }
 .desc-anchor p {
   margin-top: 8px;
