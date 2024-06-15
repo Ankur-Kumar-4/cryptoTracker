@@ -8,6 +8,7 @@ import PaginationComponent from "../components/Dashboard/PaginationComponent";
 import Loader from "../components/common/Loader";
 import BackToTopBtn from "../components/common/BackToTopBtn";
 import { get100Coins } from "../functions/get100Coins";
+import { searchApi } from "../functions/searchAPi";
 
 function Dashboard() {
   const [coins, setCoins] = useState([]);
@@ -25,13 +26,10 @@ function Dashboard() {
   const onSearhChange = (e) => {
     setSearchParam(e.target.value);
   };
-  console.log(searchParam);
-  var filteredCoins = coins.filter((item) => {
-    return (
-      item.name.toLowerCase().includes(searchParam.toLowerCase()) ||
-      item.symbol.toLowerCase().includes(searchParam.toLowerCase())
-    );
-  });
+  const handleSearch = async () => {
+    const data = await searchApi(searchParam);
+    console.log(data);
+  };
 
   useEffect(() => {
     getdata();
@@ -54,13 +52,15 @@ function Dashboard() {
       ) : (
         <div className="">
           <BackToTopBtn />
-          <Search searchParam={searchParam} onSearhChange={onSearhChange} />
-          {filteredCoins.length == 0 && searchParam != "" ? (
+          {/* <Search
+            handleSearch={handleSearch}
+            searchParam={searchParam}
+            onSearhChange={onSearhChange}
+          /> */}
+          {searchParam != "" ? (
             <NoitemFound setSearchParam={setSearchParam} />
           ) : (
-            <TabsComponent
-              coins={searchParam ? filteredCoins : paginatedcoins}
-            />
+            <TabsComponent coins={paginatedcoins} />
           )}
 
           {!searchParam && (
