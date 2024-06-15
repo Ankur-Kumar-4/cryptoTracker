@@ -7,7 +7,26 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { Link } from "react-router-dom";
 
-export default function AnchorTemporaryDrawer() {
+export default function DrawerMobileNavbar({ toggleTheme }) {
+  const [themeIsDark, setThemeIsDark] = useState(
+    localStorage.getItem("theme")
+      ? localStorage.getItem("theme") == "dark"
+      : true
+      ? true
+      : false
+  );
+  const [select, setSelect] = useState("home");
+
+  // console.log(themeIsDark);
+  const handleChange = () => {
+    setThemeIsDark(!themeIsDark);
+    toggleTheme();
+  };
+
+  const handleSelect = (val) => {
+    setSelect(val);
+  };
+
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -76,22 +95,65 @@ export default function AnchorTemporaryDrawer() {
       >
         <div className="md:hidden flex flex-col gap-5 ps-8 pt-8 text-grey text-[1rem] font-bold bg-black w-[40vw] h-[100vh]">
           <Link to="/">
-            <div className="hover:text-white cursor-pointer">Home</div>
+            <div
+              onClick={() => handleSelect("home")}
+              className={
+                select === "home"
+                  ? "hover:text-white text-white cursor-pointer"
+                  : "hover:text-white cursor-pointer"
+              }
+            >
+              Home
+            </div>
           </Link>
           <Link to="/compare">
-            <div className="hover:text-white cursor-pointer">Compare</div>
+            <div
+              onClick={() => handleSelect("compare")}
+              className={
+                select === "compare"
+                  ? "hover:text-white text-white cursor-pointer"
+                  : "hover:text-white cursor-pointer"
+              }
+            >
+              Compare
+            </div>
           </Link>
 
           <Link to="/watchlist">
-            <div className="hover:text-white cursor-pointer">Watchlist</div>
+            <div
+              onClick={() => handleSelect("watchlist")}
+              className={
+                select === "watchlist"
+                  ? "hover:text-white text-white cursor-pointer"
+                  : "hover:text-white cursor-pointer"
+              }
+            >
+              Watchlist
+            </div>
           </Link>
 
           <Link to="/dashboard">
-            <div className="hover:text-white cursor-pointer"> Dashboard</div>
+            <div
+              onClick={() => handleSelect("dashboard")}
+              className={
+                select === "dashboard"
+                  ? "hover:text-white text-white cursor-pointer"
+                  : "hover:text-white cursor-pointer"
+              }
+            >
+              {" "}
+              Dashboard
+            </div>
           </Link>
 
           <FormControlLabel
-            control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
+            control={
+              <MaterialUISwitch
+                checked={themeIsDark}
+                onChange={handleChange}
+                sx={{ m: 1 }}
+              />
+            }
           />
         </div>
       </Drawer>

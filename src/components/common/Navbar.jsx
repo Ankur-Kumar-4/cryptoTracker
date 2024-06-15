@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AnchorTemporaryDrawer from "./Drawer";
+import DrawerMobileNavbar from "./DrawerMobileNavbar";
 import { styled } from "@mui/material/styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
@@ -8,7 +8,11 @@ import { Link } from "react-router-dom";
 
 function Navbar({ toggleTheme }) {
   const [themeIsDark, setThemeIsDark] = useState(
-    localStorage.getItem("theme") == "dark" ? true : false
+    localStorage.getItem("theme")
+      ? localStorage.getItem("theme") == "dark"
+      : true
+      ? true
+      : false
   );
   const [select, setSelect] = useState("home");
 
@@ -129,11 +133,15 @@ function Navbar({ toggleTheme }) {
         </Link>
 
         <Link to="/dashboard">
-          <Button text="Dashboard" type="btn" />
+          <Button
+            onClick={() => handleSelect(null)}
+            text="Dashboard"
+            type="btn"
+          />
         </Link>
       </div>
       <div className="flex md:hidden">
-        <AnchorTemporaryDrawer />
+        <DrawerMobileNavbar toggleTheme={toggleTheme} />
       </div>
     </div>
   );
