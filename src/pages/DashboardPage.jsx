@@ -60,7 +60,7 @@ function Dashboard() {
           {searchParam != "" ? (
             <NoitemFound setSearchParam={setSearchParam} />
           ) : (
-            <TabsComponent coins={paginatedcoins} />
+            <TabsComponent coins={paginatedcoins} />  
           )}
 
           {!searchParam && (

@@ -4,9 +4,11 @@ import { styled } from "@mui/material/styles";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar({ toggleTheme }) {
+  const location = useLocation();
+  console.log(location.pathname);
   const [themeIsDark, setThemeIsDark] = useState(
     localStorage.getItem("theme")
       ? localStorage.getItem("theme") == "dark"
@@ -14,16 +16,10 @@ function Navbar({ toggleTheme }) {
       ? true
       : false
   );
-  const [select, setSelect] = useState("home");
 
-  // console.log(themeIsDark);
   const handleChange = () => {
     setThemeIsDark(!themeIsDark);
     toggleTheme();
-  };
-
-  const handleSelect = (val) => {
-    setSelect(val);
   };
 
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -96,9 +92,8 @@ function Navbar({ toggleTheme }) {
 
         <Link to="/">
           <div
-            onClick={() => handleSelect("home")}
             className={
-              select === "home"
+              location.pathname === "/"
                 ? "hover:text-white text-white cursor-pointer"
                 : "hover:text-white cursor-pointer"
             }
@@ -108,9 +103,8 @@ function Navbar({ toggleTheme }) {
         </Link>
         <Link to="/compare">
           <div
-            onClick={() => handleSelect("compare")}
             className={
-              select === "compare"
+              location.pathname === "/compare"
                 ? "hover:text-white text-white cursor-pointer"
                 : "hover:text-white cursor-pointer"
             }
@@ -121,9 +115,8 @@ function Navbar({ toggleTheme }) {
 
         <Link to="/watchlist">
           <div
-            onClick={() => handleSelect("watchlist")}
             className={
-              select === "watchlist"
+              location.pathname === "/watchlist"
                 ? "hover:text-white text-white cursor-pointer"
                 : "hover:text-white cursor-pointer"
             }
@@ -133,11 +126,7 @@ function Navbar({ toggleTheme }) {
         </Link>
 
         <Link to="/dashboard">
-          <Button
-            onClick={() => handleSelect(null)}
-            text="Dashboard"
-            type="btn"
-          />
+          <Button text="Dashboard" type="btn" />
         </Link>
       </div>
       <div className="flex md:hidden">
