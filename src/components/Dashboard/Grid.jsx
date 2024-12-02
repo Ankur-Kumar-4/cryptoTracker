@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 
@@ -15,7 +15,7 @@ function Grid({ coin, onWishListIconClick, isCoinInWishlist }) {
           ? "w-[300px] h-[300px] md:w-[240px] flex flex-col justify-center md:h-[240px] bg-darkgrey border-[2px] border-darkgrey rounded-xl ps-5 hover:border-[1.5px] hover:border-green transition-all delay-75 duration-200 cursor-pointer"
           : "w-[300px] h-[300px] md:w-[240px] flex flex-col justify-center md:h-[240px] bg-darkgrey border-[2px] border-darkgrey rounded-xl ps-5 hover:border-[1.5px] hover:border-red transition-all delay-75 duration-200 cursor-pointer"
       }
-      whileHover={{ scale: 1.03 }}
+      // whileHover={{ scale: 1.03 }}
     >
       <div className="flex justify-between items-center gap-7 md:gap-[1rem]">
         <div className="flex gap-5 items-center">

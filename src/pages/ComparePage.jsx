@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/common/Navbar";
 import SelectCoins from "../components/Compare/SelectCoins";
 import SelectDays from "../components/coins/SelectDays";
-import { getCoinData } from "../functions/getCoinData";
-import { getChartData } from "../functions/getChartData";
+import { getCoinData } from "../services/getCoinData";
+import { getChartData } from "../services/getChartData";
 import Loader from "../components/common/Loader";
-import { coinObject } from "../functions/coinObject";
+import { coinObject } from "../utils/coinObject";
 import List from "../components/Dashboard/List";
 import CoinInfo from "../components/coins/CoinInfo";
-import { SettingChartData } from "../functions/SettingChartData";
+import { SettingChartData } from "../utils/SettingChartData";
 import Chart from "../components/coins/Chart";
 import ToggleButtons from "../components/coins/ToggleButtons";
 
@@ -95,7 +95,6 @@ function ComparePage() {
 
   return (
     <div>
-     
       {isLoading ? (
         <Loader />
       ) : (

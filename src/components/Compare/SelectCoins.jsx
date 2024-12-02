@@ -1,7 +1,7 @@
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { useEffect, useState } from "react";
-import { get100Coins } from "../../functions/get100Coins";
+import { get100Coins } from "../../services/get100Coins";
 
 export default function SelectCoins({ crypto1, crypto2, handleCoinChange }) {
   const [allCoins, setAllCoins] = useState([]);

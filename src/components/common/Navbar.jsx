@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 
 function Navbar({ toggleTheme }) {
   const location = useLocation();
-  console.log(location.pathname);
+
   const [themeIsDark, setThemeIsDark] = useState(
     localStorage.getItem("theme")
       ? localStorage.getItem("theme") == "dark"

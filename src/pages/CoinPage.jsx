@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/common/Navbar";
 import { useParams } from "react-router-dom";
 import Loader from "../components/common/Loader";
-import { coinObject } from "../functions/coinObject";
+import { coinObject } from "../utils/coinObject";
 import List from "../components/Dashboard/List";
 import CoinInfo from "../components/coins/CoinInfo";
-import { getCoinData } from "../functions/getCoinData";
-import { getChartData } from "../functions/getChartData";
+import { getCoinData } from "../services/getCoinData";
+import { getChartData } from "../services/getChartData";
 import Chart from "../components/coins/Chart";
 import SelectDays from "../components/coins/SelectDays";
-import { SettingChartData } from "../functions/SettingChartData";
+import { SettingChartData } from "../utils/SettingChartData";
 import ToggleButtons from "../components/coins/ToggleButtons";
 
 function CoinPage() {
@@ -60,7 +60,6 @@ function CoinPage() {
 
   return (
     <div>
-      
       {isLoading ? (
         <Loader />
       ) : (

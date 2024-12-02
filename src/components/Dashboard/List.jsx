@@ -3,7 +3,7 @@ import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import { motion } from "framer-motion";
 import { Tooltip } from "@mui/material";
-import { convertNumber } from "../../functions/convertNumber";
+import { convertNumber } from "../../utils/convertNumber";
 import { Link } from "react-router-dom";
 
 function List({ coin }) {

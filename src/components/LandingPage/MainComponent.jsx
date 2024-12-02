@@ -27,7 +27,7 @@ function MainComponent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.9 }}
         >
-          Track crypto through a public api in real time. Visit the dashboard to
+          Track crypto through a public api in real time. visit the dashboard to
           do so!
         </motion.p>
         <motion.div
